@@ -63,19 +63,8 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        //Console.WriteLine("Search all fields not yet implemented.");
-                        JobData.FindByValue(searchTerm);
-                        foreach (Dictionary<string, string> job in someJobs) //outer loop searches each row of jobs
-                        {
-                            String jobInfo = "\n*****\n";
-                            foreach (string jobColumn in job.Keys)  // go thru each column (aka values)  of row (aka job) - inner loop
-                            {
-                                jobInfo += (jobColumn + ": " + job[jobColumn] + "\n"); //extract out columns of values for each job
-                            }
-                            jobInfo += "*****";
-                            Console.WriteLine(jobInfo); //append more formatting to jobInfo string and then write the string
-                        }
-
+                        searchResults = JobData.FindByValue(searchTerm); //invoke the new method, return jobs
+                        PrintJobs(searchResults);
                     }
                     else
                     {
