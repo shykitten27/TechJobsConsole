@@ -42,11 +42,14 @@ namespace TechJobsConsole
                     {
                         List<string> results = JobData.FindAll(columnChoice);
 
+                        int ResultsCount = 0;
                         Console.WriteLine("\n*** All " + columnChoices[columnChoice] + " Values ***");
                         foreach (string item in results)
                         {
+                            ResultsCount += 1;
                             Console.WriteLine(item);
                         }
+                        Console.WriteLine("\nResults count: " + ResultsCount);
                     }
                 }
                 else // choice is "search"
@@ -133,9 +136,11 @@ namespace TechJobsConsole
                 return;
             }
 
+            int ResultsCount = 0;
             //loop thru the dictionary by row (aka job which is the Dictionary key) and then by column (aka values) to extract each job's info (aka valueS)
             foreach (Dictionary<string, string> job in someJobs) //outer loop searches each row of jobs
             {
+                ResultsCount += 1;
                 String jobInfo = "\n*****\n"; 
                 foreach (string jobColumn in job.Keys)  // go thru each column (aka values)  of row (aka job) - inner loop
                 {
@@ -144,6 +149,7 @@ namespace TechJobsConsole
                 jobInfo += "*****";
                 Console.WriteLine(jobInfo); //append more formatting to jobInfo string and then write the string
             }
+            Console.WriteLine("\nResults count: " + ResultsCount);
         }
     }
 }
