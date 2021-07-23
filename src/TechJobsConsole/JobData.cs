@@ -138,5 +138,29 @@ namespace TechJobsConsole
 
             return rowValues.ToArray();
         }
+
+        public static List<Dictionary<string, string>> FindByValue(string value)
+        {
+            // load data if needed - will check inside own method
+            LoadData();
+            //create a new List of type Dictionary to hold all of the jobs retrieved
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+
+            //loop thru the dictionary by row (aka job which is the Dictionary key) and then by column (aka values) to extract each job's info (aka valueS)
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                foreach (string key in row.Keys)  //key is the row.Key for each Dictionary entry, loop thru the Dictionary
+                {
+                    string aValue = row[key]; //the row[key] retrieved is set to aValue
+                    if (aValue.ToLower().Contains(value.ToLower())) //convert both the retrieved aValue and the value (search term passed) to lowercase 
+                    {
+                        jobs.Add(row);   //only add the row if the value is contained in the aValue that was retrieved
+                        // Finding one field in a job that matches is sufficient
+                        break;
+                    }
+                }
+            }
+            return jobs;
+        }
     }
 }

@@ -63,7 +63,19 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        //Console.WriteLine("Search all fields not yet implemented.");
+                        JobData.FindByValue(searchTerm);
+                        foreach (Dictionary<string, string> job in someJobs) //outer loop searches each row of jobs
+                        {
+                            String jobInfo = "\n*****\n";
+                            foreach (string jobColumn in job.Keys)  // go thru each column (aka values)  of row (aka job) - inner loop
+                            {
+                                jobInfo += (jobColumn + ": " + job[jobColumn] + "\n"); //extract out columns of values for each job
+                            }
+                            jobInfo += "*****";
+                            Console.WriteLine(jobInfo); //append more formatting to jobInfo string and then write the string
+                        }
+
                     }
                     else
                     {
@@ -118,7 +130,23 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
+            //check to see if any info was returned, if not print a message stating no results
+            if (someJobs.Count == 0)
+            {
+                Console.WriteLine("\nNo results found for search term.");
+                return;
+            }
+            //loop thru the dictionary by row (aka job which is the Dictionary key) and then by column (aka values) to extract each job's info (aka valueS)
+            foreach (Dictionary<string, string> job in someJobs) //outer loop searches each row of jobs
+            {
+                String jobInfo = "\n*****\n"; 
+                foreach (string jobColumn in job.Keys)  // go thru each column (aka values)  of row (aka job) - inner loop
+                {
+                    jobInfo += (jobColumn + ": " + job[jobColumn] + "\n"); //extract out columns of values for each job
+                }
+                jobInfo += "*****";
+                Console.WriteLine(jobInfo); //append more formatting to jobInfo string and then write the string
+            }
         }
     }
 }
