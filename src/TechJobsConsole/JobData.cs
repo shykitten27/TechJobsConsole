@@ -7,12 +7,22 @@ namespace TechJobsConsole
 {
     class JobData
     {
+        //AllJobs is a List that contains a Dictionary type. Job name is therefore the key for all of the values.
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
         public static List<Dictionary<string, string>> FindAll()
         {
             LoadData();
+            /*
+            string[] array = new string[AllJobs.Count]; //create a new array for values
+            List<string> values = new List<string>();   //create an instance of values
+            foreach (Dictionary<string, string> job in AllJobs)
+            {
+                values.CopyTo(array);                   //copy values into new array for each job
+            }                                           //now I need to get the array back into Dictionary form and the List by job ????
+                return AllJobsCopy;                     //also need to figure out where to define this new COPY. 
+            */
             return AllJobs;
         }
 

@@ -99,8 +99,15 @@ namespace TechJobsConsole
                 {
                     Console.WriteLine(j + " - " + choices[choiceKeys[j]]);
                 }
-
+                //**** added validation to avoid exception error ***
+                int result; // input when parsed
                 string input = Console.ReadLine();
+                while (input == "" || !int.TryParse(input, out result)) //if blank or NOT integer
+                {
+                    Console.WriteLine("Invalid choices. Try again.");
+                    input = Console.ReadLine();
+                }
+                //****************************************************
                 choiceIdx = int.Parse(input);
 
                 if (choiceIdx < 0 || choiceIdx >= choiceKeys.Length)
@@ -125,6 +132,7 @@ namespace TechJobsConsole
                 Console.WriteLine("\nNo results found for search term.");
                 return;
             }
+
             //loop thru the dictionary by row (aka job which is the Dictionary key) and then by column (aka values) to extract each job's info (aka valueS)
             foreach (Dictionary<string, string> job in someJobs) //outer loop searches each row of jobs
             {
