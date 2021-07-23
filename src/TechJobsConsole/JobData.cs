@@ -25,7 +25,7 @@ namespace TechJobsConsole
             LoadData();
 
             List<string> values = new List<string>();
-
+         
             foreach (Dictionary<string, string> job in AllJobs)
             {
                 string aValue = job[column];
@@ -49,7 +49,7 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }
