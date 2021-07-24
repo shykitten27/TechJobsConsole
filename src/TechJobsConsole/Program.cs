@@ -138,10 +138,12 @@ namespace TechJobsConsole
 
             int ResultsCount = 0;
             //loop thru the dictionary by row (aka job which is the Dictionary key) and then by column (aka values) to extract each job's info (aka valueS)
+
             foreach (Dictionary<string, string> job in someJobs) //outer loop searches each row of jobs
             {
                 ResultsCount += 1;
-                String jobInfo = "\n*****\n"; 
+                String jobInfo = "\n*****\n";
+
                 foreach (string jobColumn in job.Keys)  // go thru each column (aka values)  of row (aka job) - inner loop
                 {
                     jobInfo += (jobColumn + ": " + job[jobColumn] + "\n"); //extract out columns of values for each job

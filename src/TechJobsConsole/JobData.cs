@@ -14,16 +14,9 @@ namespace TechJobsConsole
         public static List<Dictionary<string, string>> FindAll()
         {
             LoadData();
-            /*
-            string[] array = new string[AllJobs.Count]; //create a new array for values
-            List<string> values = new List<string>();   //create an instance of values
-            foreach (Dictionary<string, string> job in AllJobs)
-            {
-                values.CopyTo(array);                   //copy values into new array for each job
-            }                                           //now I need to get the array back into Dictionary form and the List by job ????
-                return AllJobsCopy;                     //also need to figure out where to define this new COPY. 
-            */
-            return AllJobs;
+            List<Dictionary<string, string>> CopyJobs = new List<Dictionary<string, string>>();
+            CopyJobs = AllJobs;
+            return CopyJobs;
         }
 
         /*
@@ -35,7 +28,7 @@ namespace TechJobsConsole
             LoadData();
 
             List<string> values = new List<string>();
-         
+            
             foreach (Dictionary<string, string> job in AllJobs)
             {
                 string aValue = job[column];
@@ -45,6 +38,7 @@ namespace TechJobsConsole
                     values.Add(aValue);
                 }
             }
+            values.Sort();
             return values;
         }
 
